@@ -1,0 +1,7 @@
+# VS Code Cache und temporäre Dateien
+workspaceStorage/
+globalStorage/
+*.log
+*.tmp
+History/
+SIKs/

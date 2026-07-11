@@ -1,0 +1,309 @@
+[
+    // =========================================================================
+    // 1. EINFACHE STANDARD-SHORTCUTS (MARKDOWN DIRECT-ACTIONS)
+    // =========================================================================
+    {
+        "key": "ctrl+b",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "args": {
+            "snippet": "**${TM_SELECTED_TEXT}**$0"
+        }
+    },
+    {
+        "key": "ctrl+i",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "args": {
+            "snippet": "*${TM_SELECTED_TEXT}*$0"
+        }
+    },
+
+    // =========================================================================
+    // 2. CHORD-VORBEREITUNG (TAB-TASTE FREIGEBEN)
+    // =========================================================================
+    // Befreit ctrl+m von Standard-Belegungen, um es als universellen Chord zu nutzen
+    {
+        "key": "ctrl+m",
+        "command": "-editor.action.toggleTabFocusMode"
+    },
+    {
+        "key": "ctrl+m",
+        "command": "-toggleTabFocusMode"
+    },
+
+    // =========================================================================
+    // 3. EXPORTE & PANDOC TASKS (HAUPT- & ALTERNATIV-CHORDS)
+    // =========================================================================
+    // Haupt-Chord: HTML Export mit standard.css
+    {
+        "key": "ctrl+m h",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Pandoc: Export HTML",
+        "when": "editorTextFocus && editorLangId == 'markdown'"
+    },
+    // Alternativ-Chord: HTML Export mit VS-Code eigenem CSS (VS Code Style)
+    {
+        "key": "alt+m h",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Pandoc: Export HTML (VS Code Style)",
+        "when": "editorTextFocus && editorLangId == 'markdown'"
+    },
+    // Haupt-Chord: PDF Export (über wkhtmltopdf)
+    {
+        "key": "ctrl+m p",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Pandoc: Export PDF",
+        "when": "editorTextFocus && editorLangId == 'markdown'"
+    },
+    // Haupt-Chord: Word Export (DOCX)
+    {
+        "key": "ctrl+m x",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Pandoc: Export DOCX",
+        "when": "editorTextFocus && editorLangId == 'markdown'"
+    },
+
+    // =========================================================================
+    // 4. MARKUPS & ELEMENTE (SNIPPETS VIA CHORD)
+    // =========================================================================
+    // URL / Link einfügen
+    {
+        "key": "ctrl+m l",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "args": {
+            "snippet": "[${TM_SELECTED_TEXT:${1:Linktext}}](${2:url})$0"
+        }
+    },
+    // Code-Block einfügen (Unicode-Escaped gegen Parser-Absturz)
+{
+    "key": "ctrl+m c",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus && editorLangId == 'markdown'",
+    "args": {
+        "snippet": "```\n${TM_SELECTED_TEXT}$0\n```"
+    }
+},
+    // Frontmatter Template (YAML-Header mit Titel, Datum, Quelle)
+    {
+        "key": "ctrl+m f",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "args": {
+            "snippet": "---\ntitle: ${1:}\ndate: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\nquelle: ${2:}\n---\n\n$0"
+        }
+    },
+    // Pandoc-Span Formatierung für Quellenangaben ({.quelle})
+    {
+        "key": "ctrl+m q",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "snippet": "[${TM_SELECTED_TEXT:${1:Text}}]{.quelle}"
+        }
+    },
+
+   // =========================================================================
+    // 5. 3 verschiedene Bild-Einfügungen
+    // =========================================================================
+
+
+    // Bild einfügen (Pelican {static} Pfad) Muss zuvor aber noch mit
+    // resize_images in c:\Tools\pelican\bildbearbeitung\ nach \images in verschieden
+    // große Formate gebracht werden
+
+    {
+        "key": "ctrl+m b",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "args": {
+            "snippet": "<figure>\n  <img src=\"{static}/images/${1:bildname}-500px.jpg\"\n       srcset=\"/images/${1:bildname}-500px.jpg 1x,\n               /images/${1:bildname}-1000px.jpg 2x\"\n       alt=\"${2:BildbeschreibungPelicanbild}\"\n       style=\"max-width: 100%; height: auto;\">\n  <figcaption>${3:Bildunterschrift}</figcaption>\n</figure>\n$0"
+        }
+    },
+
+// Universielles Bild (exportsicher)
+
+    {
+        "key": "ctrl+m i",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "args": {
+            "snippet": "<figure>\n  <img src=\"${1:bildname}.jpg\"\n  alt=\"${2:BildbeschreibungUniversiellesBildExportsicher}\"\n       style=\"max-width: 100%; height: auto;\">\n  <figcaption>${3:Bildunterschrift}</figcaption>\n</figure>\n$0"
+        }
+    },
+
+    // Image, einfaches Bild ohne Figure-Wrapper — prefix "image"
+    {
+        "key": "alt+m i",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "args": {
+            "snippet": "![${1:Linktext}](${2:url})$0"
+        }
+    },
+
+    // =========================================================================
+    // 5. INHALTSVERZEICHNIS (TOC) & PYTHON-SKRIPTE
+    // =========================================================================
+    // TOC erstellen
+    {
+        "key": "ctrl+m t",
+        "command": "markdown.extension.toc.create",
+        "when": "editorTextFocus && editorLangId == 'markdown'"
+    },
+    // TOC: Kapitelnummern hinzufügen
+    {
+        "key": "ctrl+m 1",
+        "command": "markdown.extension.toc.addSecNumbers",
+        "when": "editorTextFocus && editorLangId == 'markdown'"
+    },
+    // TOC: Kapitelnummern entfernen
+    {
+        "key": "ctrl+m 2",
+        "command": "markdown.extension.toc.removeSecNumbers",
+        "when": "editorTextFocus && editorLangId == 'markdown'"
+    },
+    // Python-Skript: Weiche Umbrüche zu Absatzabständen konvertieren
+    {
+        "key": "ctrl+m w",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Markdown: Weiche Umbrüche → Absatzabstände",
+        "when": "editorLangId == 'markdown'"
+    },
+    // Python-Skript: YouTube-Placeholder in Pelican-Format einbetten
+    {
+        "key": "ctrl+m v",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Pelican: YouTube einbetten"
+    },
+
+    // =========================================================================
+    // 6. ALLGEMEINE AKTIONEN & EDITOR-STEUERUNG
+    // =========================================================================
+    // Markierte Zeilen alphabetisch aufsteigend sortieren
+    {
+        "key": "ctrl+m s",
+        "command": "editor.action.sortLinesAscending"
+    },
+    // Textmarker (Highlighting) an- und ausschalten
+    {
+        "key": "ctrl+m m",
+        "command": "textmarker.toggleHighlight"
+    },
+    // Breadcrumbs (Pfadleiste der aktuellen Datei oben im Editor) ein-/ausblenden
+    {
+        "key": "ctrl+m j",
+        "command": "breadcrumbs.toggle"
+    },
+    // Neues leeres Python-File erzeugen
+    {
+        "key": "ctrl+m y",
+        "command": "python.createNewFile"
+    },
+    // WSL (Linux Subsystem) Fenster in neuer Instanz öffnen
+    {
+        "key": "ctrl+m u",
+        "command": "remote-wsl.connectInNewWindow"
+    },
+    // VS Code Vorlagenmenü für neue Dateien öffnen
+    {
+        "key": "ctrl+shift+n",
+        "command": "welcome.showNewFileEntries"
+    },
+
+    // =========================================================================
+    // 7. SYSTEM-CHORDS (SYSTEM-STEUERUNG)
+    // =========================================================================
+    // Fenster / Workspace komplett neu laden (Reload Window)
+    {
+        "key": "ctrl+y ctrl+y",
+        "command": "workbench.action.reloadWindow"
+    },
+
+    // =========================================================================
+    // 8. PROVISORISCHE LÜCKEN-ERGÄNZUNGEN (ALT+M, bisher ungebundene Tasks/Snippets)
+    // =========================================================================
+    // Task: Absätze erzeugen (PowerShell, arbeitet auf der Zwischenablage)
+    {
+        "key": "alt+m a",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Absätze erzeugen"
+    },
+    // Snippet: Universelles Bild (Export-sicher) — prefix "img"
+    {
+        "key": "alt+m e",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "args": {
+            "snippet": "<div align=\"center\">\n  <img src=\"${1:PallasAthene.jpg}\" alt=\"${2:Bildbeschreibung}\" width=\"480\" style=\"max-width: 100%; height: auto;\">\n  <br>\n  <em>${3:Bildunterschrift}</em>\n</div>\n$0"
+        }
+    },
+    // Snippet: Markdown Table 2 Columns — prefix "tab2"
+    {
+        "key": "alt+m 2",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "args": {
+            "snippet": "| ${1:Kopf 1} | ${2:Kopf 2} |\n|-----------|-----------|\n| ${3:Wert} | ${4:Wert} |"
+        }
+    },
+    // Snippet: Markdown Table 3 Columns — prefix "tab3"
+    {
+        "key": "alt+m 3",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "args": {
+            "snippet": "| ${1:Kopf 1} | ${2:Kopf 2} | ${3:Kopf 3} |\n|-----------|-----------|-----------|\n| ${4:Wert} | ${5:Wert} | ${6:Wert} |"
+        }
+    },
+    // Snippet: YouTube Video Placeholder — prefix "yt"
+    {
+        "key": "alt+m y",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "args": {
+            "snippet": "<!--\n1. Technische ID (ohne Leerzeichen): ${1:video-id}\n2. YouTube-ID (z.B. DInuHQGpe_0): ${2:DInuHQGpe_0}\n3. Titel für Leser: ${3:Mein Video}\n-->\n\n<div id=\"${1:video-id}\"\n     class=\"video-placeholder\"\n     style=\"background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),\n            url('https://img.youtube.com/vi/${2:DInuHQGpe_0}/hqdefault.jpg'); background-size: cover;\"\n     onclick=\"loadExternalContent('${1:video-id}', 'https://www.youtube.com/embed/${2:DInuHQGpe_0}')\">\n\n    <p><strong>${3:Mein Video}</strong><br>\n    Externer Inhalt von YouTube. Mit dem Laden akzeptieren Sie die Datenschutzbestimmungen von Google.</p>\n\n    <button class=\"play-button\">Video jetzt laden</button>\n</div>\n\n$0"
+        }
+    },
+    // Snippet: Mark Highlight — prefix "mark"
+    {
+        "key": "alt+m k",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "args": {
+            "snippet": "<mark>${TM_SELECTED_TEXT:$1}</mark>"
+        }
+    },
+
+    // Snippet: Footnote — prefix "fn"
+    {
+        "key": "alt+m n",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "args": {
+            "snippet": "[^${1:1}]\n\n[^${1:1}]: ${2:Fußnotentext}\n$0"
+        }
+    },
+
+    // [[Wikilinks]] erstellen
+
+    {
+  "key": "alt+m l",
+  "command": "editor.action.insertSnippet",
+  "when": "editorTextFocus && editorLangId == 'markdown'",
+  "args": {
+    "snippet": "[[${TM_SELECTED_TEXT}$1]]"
+  }
+}
+
+    {
+  "key": "alt+n l",
+  "command": "editor.action.insertSnippet",
+  "when": "editorTextFocus && editorLangId == 'markdown'",
+  "args": {
+    "snippet": "[${TM_SELECTED_TEXT}$1]"
+  }
+}
+
+
+]

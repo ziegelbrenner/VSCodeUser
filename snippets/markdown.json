@@ -1,0 +1,165 @@
+{
+    // ==========================================
+    // MARKDOWN SNIPPETS - BEREINIGT & FUNKTIONAL
+    // ==========================================
+
+    "Markdown Frontmatter": {
+        "prefix": "frontmatter",
+        "body": [
+            "---",
+            "title: $1",
+            "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+            "quelle: $2",
+            "---",
+            "",
+            "$0"
+        ],
+        "description": "Frontmatter Template"
+    },
+
+   // Bild einfügen (Pelican {static} Pfad) Muss zuvor aber noch mit
+    // resize_images in c:\Tools\pelican\bildbearbeitung\ nach \images in verschieden
+    // große Formate gebracht werden
+
+    "Responsive Image": {
+        "prefix": "bild",
+        "body": [
+            "<figure>",
+            "  <img src=\"{static}/images/${1:bildname}-500px.jpg\"",
+            "       srcset=\"/images/${1:bildname}-500px.jpg 1x,",
+            "               /images/${1:bildname}-1000px.jpg 2x\"",
+            "       alt=\"${2:Bildbeschreibung}\"",
+            "       style=\"max-width: 100%; height: auto;\">",
+            "  <figcaption>${3:Bildunterschrift}</figcaption>",
+            "</figure>"
+        ],
+        "description": "Fügt responsives Bild mit Bildunterschrift ein"
+    },
+
+
+
+   "Universelles Bild (Export-sicher)": {
+    "prefix": "img",
+    "body": [
+        "<div align=\"center\">",
+        "  <img src=\"${1:bildname.jpg}\" alt=\"${2:BildbeschreibungUniversiellesBildExportsicher}\" width=\"480\" style=\"max-width: 100%; height: auto;\">",
+        "  <br>",
+        "  <em>${3:Bildunterschrift}</em>",
+        "</div>",
+        "$0"
+    ],
+    "description": "Export-sicheres zentriertes Bild für HTML und Word"
+},
+
+// Image, einfaches Bild ohne Figure-Wrapper — prefix "image"
+
+      "Markdown bbild": {
+        "prefix": "image",
+        "body": [
+            "![${1:Image}](${2:url})$0"
+        ],
+        "description": "Markdown-Image einfügen"
+    },
+
+
+
+
+    "Markdown Table 3 Columns": {
+        "prefix": "tab3",
+        "body": [
+            "| ${1:Kopf 1} | ${2:Kopf 2} | ${3:Kopf 3} |",
+            "|-----------|-----------|-----------|",
+            "| ${4:Wert} | ${5:Wert} | ${6:Wert} |"
+        ],
+        "description": "Markdown Tabelle mit 3 Spalten"
+    },
+
+    "Markdown Table 2 Columns": {
+        "prefix": "tab2",
+        "body": [
+            "| ${1:Kopf 1} | ${2:Kopf 2} |",
+            "|-----------|-----------|",
+            "| ${3:Wert} | ${4:Wert} |"
+        ],
+        "description": "Markdown Tabelle mit 2 Spalten"
+    },
+
+    "YouTube Video Placeholder": {
+        "prefix": "yt",
+        "body": [
+            "<!--",
+            "1. Technische ID (ohne Leerzeichen): ${1:video-id}",
+            "2. YouTube-ID (z.B. DInuHQGpe_0): ${2:DInuHQGpe_0}",
+            "3. Titel für Leser: ${3:Mein Video}",
+            "-->",
+            "",
+            "<div id=\"${1:video-id}\"",
+            "     class=\"video-placeholder\"",
+            "     style=\"background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),",
+            "            url('https://img.youtube.com/vi/${2:DInuHQGpe_0}/hqdefault.jpg'); background-size: cover;\"",
+            "     onclick=\"loadExternalContent('${1:video-id}', 'https://www.youtube.com/embed/${2:DInuHQGpe_0}')\">",
+            "",
+            "    <p><strong>${3:Mein Video}</strong><br>",
+            "    Externer Inhalt von YouTube. Mit dem Laden akzeptieren Sie die Datenschutzbestimmungen von Google.</p>",
+            "",
+            "    <button class=\"play-button\">Video jetzt laden</button>",
+            "</div>",
+            "",
+            "$0"
+        ],
+        "description": "YouTube-Placeholder mit Datenschutz-Hinweis"
+    },
+
+"Quelle (Pandoc)": {
+    "prefix": "quelle",
+    "body": [
+        "[${TM_SELECTED_TEXT:${1:Text}}]{.quelle}"
+    ],
+    "description": "Pandoc Span mit class .quelle"
+},
+
+
+
+
+
+    "Mark Highlight": {
+        "prefix": "mark",
+        "body": [
+            "<mark>${TM_SELECTED_TEXT:$1}</mark>"
+        ],
+        "description": "Text mit <mark> hervorheben"
+    },
+
+    "Markdown Link": {
+        "prefix": "link",
+        "body": [
+            "[${1:Linktext}](${2:url})$0"
+        ],
+        "description": "Markdown-Link einfügen"
+    },
+
+
+
+    "Code Block": {
+        "prefix": "code",
+        "body": [
+            "```${1:language}",
+            "$2",
+            "```",
+            "$0"
+        ],
+        "description": "Code-Block mit Syntax-Highlighting"
+    },
+
+
+    "Footnote": {
+        "prefix": "fn",
+        "body": [
+            "[^${1:1}]",
+            "",
+            "[^${1:1}]: ${2:Fußnotentext}",
+            "$0"
+        ],
+        "description": "Fußnote einfügen"
+    }
+}

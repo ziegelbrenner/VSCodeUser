@@ -1,0 +1,355 @@
+{
+    // ==========================================
+    // VSCODE SETTINGS
+    // ==========================================
+
+    // ==========================================
+    // SICHERHEIT & UPDATES (GANZ OBEN!)
+    // ==========================================
+    "security.workspace.trust.enabled": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "security.workspace.trust.trustedUris": [
+        "C:\\Users\\w",
+        "C:\\tools"
+    ],
+    "security.promptForLocalFileProtocolHandling": false,
+    "update.mode": "none",
+    "update.enableWindowsBackgroundUpdates": false,
+    "workbench.startupEditor": "none",
+
+    // Terminal-Schriftarten
+    "terminal.integrated.fontFamily": "Cascadia Mono",
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.fontWeight": "normal",
+    "terminal.integrated.fontLigatures": false,
+
+    "files.associations": {
+        "*.json": "jsonc",
+        "*.info": "markdown"
+    },
+
+    // ==========================================
+    // MULTI-COMMAND KONFIGURATION
+    // ==========================================
+    "multiCommand.commands": [
+        {
+            "command": "multiCommand.newMarkdownFile",
+            "sequence": [
+                {
+                    "command": "workbench.action.files.newUntitledFile",
+                    "args": {
+                        "languageId": "markdown"
+                    }
+                },
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "---\ntitle: ${1:}\ndate: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\nquelle: ${2:}\n---\n\n$0"
+                    }
+                }
+            ]
+        },
+        {
+            "command": "multiCommand.insertResponsiveImage",
+            "sequence": [
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "<figure class=\"bild-container\">\n  <img\n    src=\"${1:bilddateinameeinfuegen.jpg}\"\n    alt=\"${2:Beschreibung}\"\n    style=\"max-width: 460px; width: 100%; height: auto;\"\n    class=\"bild-responsive\">\n  <figcaption>${3:Legende}</figcaption>\n</figure>"
+                    }
+                }
+            ]
+        },
+        {
+            "command": "multiCommand.toggleRenderWhitespaceAndReload",
+            "sequence": [
+                "editor.action.toggleRenderWhitespace",
+                "workbench.action.reloadWindow"
+            ]
+        },
+        {
+            "command": "multiCommand.newHtmlFile",
+            "sequence": [
+                {
+                    "command": "workbench.action.files.newUntitledFile",
+                    "args": {
+                        "languageId": "html"
+                    }
+                }
+            ]
+        }
+    ],
+
+    // ==========================================
+    // SYMBOLLEISTEN-BEFEHLE (Commands Extension)
+    // ==========================================
+    "commands.commands": [
+        {
+            "text": "📝 Neu",
+            "command": "multiCommand.newMarkdownFile"
+        },
+        {
+            "text": "💾 Speichern",
+            "command": "workbench.action.files.save"
+        },
+        {
+            "text": "💾💾 unter",
+            "command": "workbench.action.files.saveAs"
+        },
+        {
+            "text": "❌ |",
+            "command": "workbench.action.closeActiveEditor"
+        },
+        {
+            "text": "❌❌ |",
+            "command": "workbench.action.closeOtherEditors"
+        },
+        {
+            "text": "❌❌❌",
+            "command": "workbench.action.closeAllEditors"
+        },
+        {
+            "text": "🔗 Link",
+            "command": "editor.action.insertSnippet",
+            "args": {
+                "snippet": "[${1:Linktext}](${2:url})$0"
+            }
+        },
+        {
+            "text": "🖼️ Bild",
+            "command": "multiCommand.insertResponsiveImage"
+        },
+        {
+            "text": "👁️Preview",
+            "command": "markdown.showPreview",
+            "when": "editorLangId == markdown"
+        },
+        {
+            "text": "👁️❌",
+            "command": "workbench.action.closeActiveEditor",
+            "when": "markdownPreviewFocus"
+        },
+        {
+            "text": "👁️ Split",
+            "command": "markdown.showPreviewToSide"
+        },
+        {
+            "text": "🧘 Zen",
+            "command": "workbench.action.toggleZenMode"
+        }
+    ],
+
+    // ==========================================
+    // EDITOR-EINSTELLUNGEN
+    // ==========================================
+    "zenMode.hideStatusBar": false,
+    "workbench.editor.empty.hint": "hidden",
+    "editor.fontWeight": "400",
+    "editor.cursorStyle": "line",
+    "editor.cursorBlinking": "smooth",
+    "window.autoDetectColorScheme": true,
+    "files.defaultLanguage": "markdown",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "editor.wordWrap": "on",
+    "workbench.editor.showTabs": "multiple",
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.editor.labelFormat": "short",
+    "workbench.editor.decorations.badges": false,
+    "workbench.editor.decorations.colors": false,
+    "editor.renderWhitespace": "none",
+    "window.commandCenter": false,
+
+    // ==========================================
+    // MARKDOWN-EINSTELLUNGEN
+    // ==========================================
+    "markdown.preview.openMarkdownLinks": "inEditor",
+    "workbench.editorAssociations": {
+        "*.md": "default"
+    },
+    "markdown.extension.preview.autoShow": false,
+    "markdown.extension.preview.autoShowPreviewToSide": false,
+    "markdown.extension.toc.orderedList": true,
+    "markdownShortcuts.icons.citations": true,
+    "markdownShortcuts.icons.image": true,
+    "markdownShortcuts.icons.link": true,
+    "markdownShortcuts.bullets.marker": "-",
+
+    // ==========================================
+    // AUTOVERVOLLSTÄNDIGUNG & COPILOT
+    // ==========================================
+    "editor.wordBasedSuggestions": "off",
+    "editor.inlineSuggest.edits.allowCodeShifting": "never",
+    "editor.inlineSuggest.edits.renderSideBySide": "never",
+    "editor.inlineSuggest.enabled": false,
+    "editor.suggest.selectionMode": "never",
+
+    // GitHub Copilot deaktiviert
+    "github.copilot.enable": false,
+    "github.copilot.chat.enabled": false,
+    "github.copilot.editor.enableAutoCompletions": false,
+    "github.copilot.inlineSuggest.enable": false,
+    "github.copilot.statusBar": "hidden",
+
+    // Chat-Features deaktiviert
+    "chat.disableAIFeatures": true,
+
+    // Snippets aktivieren (minimalistisch)
+    "editor.tabCompletion": "onlySnippets",
+    "editor.suggest.showSnippets": true,
+
+    // ==========================================
+    // SYMBOLLEISTEN-STYLING
+    // ==========================================
+    "ShortcutMenuBar.fontSize": "20px",
+    "ShortcutMenuBar.height": "40px",
+    "ShortcutMenuBar.buttonPadding": "18px",
+
+    // ==========================================
+    // THEMES & ICONS
+    // ==========================================
+    "workbench.iconTheme": "vs-nomo-dark",
+
+    // ==========================================
+    // FARBANPASSUNGEN
+    // ==========================================
+    "workbench.colorCustomizations": {
+        "[Default Dark Modern]": {
+            "editor.selectionBackground": "#0099ffb0",
+            "editor.wordHighlightBackground": "#60606080",
+            "editor.wordHighlightStrongBackground": "#606060c0"
+        },
+        "minimapSlider.background": "#FFFFFF33",
+        "minimapSlider.hoverBackground": "#FFFFFF66",
+        "minimapSlider.activeBackground": "#FFFFFFAA",
+        "tab.activeBackground": "#2b2b28",
+        "tab.activeForeground": "#ffffff",
+        "tab.activeBorder": "#ffcc00",
+        "tab.activeBorderTop": "#2b2b28"
+    },
+
+    // ==========================================
+    // SYNTAX-HIGHLIGHTING FÜR MARKDOWN
+    // ==========================================
+    "editor.tokenColorCustomizations": {
+        "[Default Dark Modern]": {
+            "textMateRules": [
+                {
+                    "scope": "heading.1.markdown",
+                    "settings": {
+                        "foreground": "#ac6f6f",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "heading.2.markdown",
+                    "settings": {
+                        "foreground": "#7ead66"
+                    }
+                },
+                {
+                    "scope": "heading.3.markdown",
+                    "settings": {
+                        "foreground": "#b0d3fa"
+                    }
+                },
+                {
+                    "scope": "heading.4.markdown",
+                    "settings": {
+                        "foreground": "#a0a75a"
+                    }
+                },
+                {
+                    "scope": "heading.5.markdown",
+                    "settings": {
+                        "foreground": "#848579"
+                    }
+                },
+                {
+                    "scope": "heading.6.markdown",
+                    "settings": {
+                        "foreground": "#8d8e88",
+                        "fontStyle": "italic"
+                    }
+                },
+
+                {
+    "scope": "markup.underline.link.wikilink",
+    "settings": { "foreground": "#7aa2c8" }
+},
+{
+    "scope": "punctuation.wikilink",
+    "settings": { "foreground": "#4a6a8a" }
+}
+
+
+
+
+
+
+            ]
+        }
+    },
+
+    // ==========================================
+    // RECHTSCHREIBPRÜFUNG
+    // ==========================================
+    "cSpell.language": "de-de,de-at",
+    "cSpell.enabledFileTypes": {
+        "markdown": true
+    },
+
+    // ==========================================
+    // COMMAND-RUNNER
+    // ==========================================
+    "command-runner.commands": {
+        "generateTOC": "node \"C:\\Users\\w\\.vscode\\scripts\\generate-toc.js\" \"${file}\""
+    },
+    "command-runner.terminal.autoFocus": false,
+    "command-runner.terminal.autoClear": true,
+
+    // ==========================================
+    // FILEUTILS CUSTOM COMMANDS
+    // ==========================================
+    "fileutils.customCommands": [
+        {
+            "command": "renameFromYamlTitle",
+            "title": "Rename: YAML Title → Filename",
+            "script": [
+                "const fs = require('fs');",
+                "const content = fs.readFileSync('${file}', 'utf8');",
+                "const match = content.match(/title:\\s*(.+)/);",
+                "if (!match) throw 'Kein YAML-Titel gefunden.';",
+                "const title = match[1].trim().toLowerCase().replace(/\\s+/g, '-');",
+                "title + '.md'"
+            ]
+        }
+    ],
+
+    // Schriftwechsel zwischen md und txt
+    "editor.fontFamily": "'Cascadia Code', 'Consolas'",
+    "[markdown]": {
+        "editor.fontFamily": "'Segoe UI', 'Arial'",
+        "editor.fontSize": 20,
+        "editor.lineHeight": 32
+    },
+
+    // Markdown-Toolbar verbergen
+    "markdown.editor.toolbar.enabled": false,
+
+    // CMD als Standard-Terminal und Startverzeichnis
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "terminal.integrated.cwd": "C:\\Tools",
+    "markdown.preview.typographer": true,
+    "read-aloud-text.voice": "",
+    "editor.tabFocusMode": false,
+    "editor.fontSize": 16,
+    "breadcrumbs.enabled": false
+
+// beginnt ganz oben mit geschweifter Klammer, daher nie die da unten vergessen, Oida!
+}
+
+
+
+
+

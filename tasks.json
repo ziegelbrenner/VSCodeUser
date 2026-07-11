@@ -1,0 +1,147 @@
+{
+    // ==========================================
+    // VSCODE TASKS
+    //
+    // ==========================================
+    "version": "2.0.0",
+    "tasks": [
+        // --- EXPORTS (mit Shortcut) ---
+        {
+            "label": "Pandoc: Export HTML",
+            "type": "shell",
+            "command": "pandoc",
+            "args": [
+                "--verbose",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.html",
+                "--standalone",
+                "--template=C:/Users/w/AppData/Local/Pandoc/template.html",
+                "--css=C:/Users/w/AppData/Local/Pandoc/standard.css",
+                "--embed-resources",
+                "--section-divs"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${fileDirname}"
+            }
+        },
+        {
+            "label": "Pandoc: Export HTML (VS Code Style)",
+            "type": "shell",
+            "command": "pandoc",
+            "args": [
+                "--metadata=lang:de",
+                "--verbose",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.html",
+                "--standalone",
+                "--css=C:/Users/w/AppData/Local/Pandoc/markdown.css",
+                "--css=C:/Users/w/AppData/Local/Pandoc/highlight.css",
+                "--embed-resources",
+                "--section-divs"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always"
+            },
+            "group": "build",
+            "options": {
+                "cwd": "${fileDirname}"
+            }
+        },
+        {
+            "label": "Pandoc: Export DOCX",
+            "type": "shell",
+            "command": "pandoc",
+            "args": [
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.docx"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "silent"
+            },
+            "group": "build",
+            "options": {
+                "cwd": "${fileDirname}"
+            }
+        },
+        {
+            "label": "Pandoc: Export PDF",
+            "type": "shell",
+            "command": "pandoc",
+            "args": [
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.pdf",
+                "--standalone",
+                "--pdf-engine=wkhtmltopdf",
+                "--css=C:/Users/w/AppData/Local/Pandoc/standard.css"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "silent"
+            },
+            "group": "build",
+            "options": {
+                "cwd": "${fileDirname}"
+            }
+        },
+        {
+            "label": "Absätze erzeugen",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-Command",
+                "$text = Get-Clipboard; $text -replace '([^\\r\\n])\\r?\\n([^\\r\\n])', '$1`r`n`r`n$2' | Set-Clipboard"
+            ],
+            "presentation": {
+                "reveal": "never",
+                "panel": "shared"
+            },
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${fileDirname}"
+            }
+        },
+        {
+            "label": "Markdown: Weiche Umbrüche → Absatzabstände",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "C:\\Tools\\hints\\VS Code\\vscode_absaetze_erzeugen\\fix_breaks.py",
+                "${file}"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Pelican: YouTube einbetten",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "${workspaceFolder}/.vscode/youtube_embed.py"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
