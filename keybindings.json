@@ -3,14 +3,6 @@
     // 1. EINFACHE STANDARD-SHORTCUTS (MARKDOWN DIRECT-ACTIONS)
     // =========================================================================
     {
-        "key": "ctrl+b",
-        "command": "editor.action.insertSnippet",
-        "when": "editorTextFocus && editorLangId == 'markdown'",
-        "args": {
-            "snippet": "**${TM_SELECTED_TEXT}**$0"
-        }
-    },
-    {
         "key": "ctrl+i",
         "command": "editor.action.insertSnippet",
         "when": "editorTextFocus && editorLangId == 'markdown'",
@@ -91,7 +83,8 @@
         "command": "editor.action.insertSnippet",
         "when": "editorTextFocus && editorLangId == 'markdown'",
         "args": {
-            "snippet": "---\ntitle: ${1:}\ndate: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\nquelle: ${2:}\n---\n\n$0"
+            "langId": "markdown",
+            "name": "Markdown Frontmatter"
         }
     },
     // Pandoc-Span Formatierung für Quellenangaben ({.quelle})
@@ -294,7 +287,7 @@
   "args": {
     "snippet": "[[${TM_SELECTED_TEXT}$1]]"
   }
-}
+},
 
     {
   "key": "alt+n l",
@@ -303,7 +296,21 @@
   "args": {
     "snippet": "[${TM_SELECTED_TEXT}$1]"
   }
-}
+},
 
+{
+    "key": "alt+n h",
+    "command": "multiCommand.newHtmlFile"
+},
+{
+    "key": "alt+m m",
+    "command": "HookyQR.minify"
+},
+
+{
+  "key": "alt+s",
+  "command": "workbench.action.tasks.runTask",
+  "args": "Suchwort: aktuelle Datei durchsuchen"
+}
 
 ]

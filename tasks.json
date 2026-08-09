@@ -142,6 +142,38 @@
                 "panel": "shared"
             },
             "problemMatcher": []
-        }
-    ]
+        },
+        {
+
+      "label": "Suchwort: aktuelle Datei durchsuchen",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "C:\\Tools\\such\\vscode_suche.py",
+        "${file}",
+        "${input:suchwort}",
+        "${input:kontext}",
+        "${input:modus}",
+        "${input:ignoreCase}",
+        "${input:ganzesWort}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": false
+      }
+    }
+  ],
+  "inputs": [
+    { "id": "suchwort", "type": "promptString", "description": "Suchwort (Regex möglich)" },
+    { "id": "kontext", "type": "promptString", "description": "Kontext-Einheiten davor/danach", "default": "0" },
+    { "id": "modus", "type": "pickString", "description": "Kontext-Einheit",
+      "options": ["saetze", "zeilen"], "default": "saetze" },
+    { "id": "ignoreCase", "type": "pickString", "description": "Groß-/Kleinschreibung ignorieren?",
+      "options": ["j", "n"], "default": "j" },
+    { "id": "ganzesWort", "type": "pickString", "description": "Nur als eigenständiges Wort werten?",
+      "options": ["n", "j"], "default": "n" }
+  ]
 }
+

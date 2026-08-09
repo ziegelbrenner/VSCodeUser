@@ -1,23 +1,30 @@
 {
     // ==========================================
-    // MARKDOWN SNIPPETS - BEREINIGT & FUNKTIONAL
+    // MARKDOWN SNIPPETS
     // ==========================================
 
-    "Markdown Frontmatter": {
-        "prefix": "frontmatter",
-        "body": [
-            "---",
-            "title: $1",
-            "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
-            "quelle: $2",
-            "---",
-            "",
-            "$0"
-        ],
-        "description": "Frontmatter Template"
-    },
+    // Hier ist Basis der Yaml-Frontmatter-Eintragungen.
+    // Änderungen nur hier
 
-   // Bild einfügen (Pelican {static} Pfad) Muss zuvor aber noch mit
+
+    "Markdown Frontmatter": {
+    "prefix": "frontmatter",
+    "body": [
+        "---",
+        "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+        "source:",
+        "origin:",
+        "description:",
+        "tags: $1",
+        "---",
+        "",
+        "$0"
+    ],
+    "description": "Frontmatter Template. Angeglichen an Obsidian"
+},
+
+
+   // Bild 3 "bild" Nur für PELICAN! Bild einfügen (Pelican {static} Pfad) Muss zuvor aber noch mit
     // resize_images in c:\Tools\pelican\bildbearbeitung\ nach \images in verschieden
     // große Formate gebracht werden
 
@@ -37,32 +44,7 @@
     },
 
 
-
-   "Universelles Bild (Export-sicher)": {
-    "prefix": "img",
-    "body": [
-        "<div align=\"center\">",
-        "  <img src=\"${1:bildname.jpg}\" alt=\"${2:BildbeschreibungUniversiellesBildExportsicher}\" width=\"480\" style=\"max-width: 100%; height: auto;\">",
-        "  <br>",
-        "  <em>${3:Bildunterschrift}</em>",
-        "</div>",
-        "$0"
-    ],
-    "description": "Export-sicheres zentriertes Bild für HTML und Word"
-},
-
-// Image, einfaches Bild ohne Figure-Wrapper — prefix "image"
-
-      "Markdown bbild": {
-        "prefix": "image",
-        "body": [
-            "![${1:Image}](${2:url})$0"
-        ],
-        "description": "Markdown-Image einfügen"
-    },
-
-
-
+// Tabellen
 
     "Markdown Table 3 Columns": {
         "prefix": "tab3",
@@ -83,6 +65,8 @@
         ],
         "description": "Markdown Tabelle mit 2 Spalten"
     },
+
+    // Youtube einfügen
 
     "YouTube Video Placeholder": {
         "prefix": "yt",
@@ -109,17 +93,6 @@
         ],
         "description": "YouTube-Placeholder mit Datenschutz-Hinweis"
     },
-
-"Quelle (Pandoc)": {
-    "prefix": "quelle",
-    "body": [
-        "[${TM_SELECTED_TEXT:${1:Text}}]{.quelle}"
-    ],
-    "description": "Pandoc Span mit class .quelle"
-},
-
-
-
 
 
     "Mark Highlight": {
@@ -150,7 +123,7 @@
         ],
         "description": "Code-Block mit Syntax-Highlighting"
     },
-
+// Fußnote - funktioniert bei Export nach docx
 
     "Footnote": {
         "prefix": "fn",

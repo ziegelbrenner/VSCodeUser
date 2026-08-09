@@ -1,0 +1,12 @@
+.gitattributes
+.gitignore
+chatLanguageModels.json
+globalStorage
+History
+keybindings.json
+settings.json
+SIKs
+snippets
+tasks.json
+user.txt
+workspaceStorage

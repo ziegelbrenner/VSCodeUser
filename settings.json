@@ -10,9 +10,12 @@
     "security.workspace.trust.untrustedFiles": "open",
     "security.workspace.trust.trustedUris": [
         "C:\\Users\\w",
-        "C:\\tools"
-    ],
+        "C:\\tools",
+        ],
     "security.promptForLocalFileProtocolHandling": false,
+
+    "security.workspace.trust.emptyWindow": true,
+
     "update.mode": "none",
     "update.enableWindowsBackgroundUpdates": false,
     "workbench.startupEditor": "none",
@@ -27,67 +30,56 @@
         "*.json": "jsonc",
         "*.info": "markdown"
     },
+    // Multicommands
 
-    // ==========================================
-    // MULTI-COMMAND KONFIGURATION
-    // ==========================================
     "multiCommand.commands": [
-        {
-            "command": "multiCommand.newMarkdownFile",
-            "sequence": [
-                {
-                    "command": "workbench.action.files.newUntitledFile",
-                    "args": {
-                        "languageId": "markdown"
-                    }
-                },
-                {
-                    "command": "editor.action.insertSnippet",
-                    "args": {
-                        "snippet": "---\ntitle: ${1:}\ndate: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\nquelle: ${2:}\n---\n\n$0"
-                    }
-                }
-            ]
-        },
-        {
-            "command": "multiCommand.insertResponsiveImage",
-            "sequence": [
-                {
-                    "command": "editor.action.insertSnippet",
-                    "args": {
-                        "snippet": "<figure class=\"bild-container\">\n  <img\n    src=\"${1:bilddateinameeinfuegen.jpg}\"\n    alt=\"${2:Beschreibung}\"\n    style=\"max-width: 460px; width: 100%; height: auto;\"\n    class=\"bild-responsive\">\n  <figcaption>${3:Legende}</figcaption>\n</figure>"
-                    }
-                }
-            ]
-        },
-        {
-            "command": "multiCommand.toggleRenderWhitespaceAndReload",
-            "sequence": [
-                "editor.action.toggleRenderWhitespace",
-                "workbench.action.reloadWindow"
-            ]
-        },
-        {
-            "command": "multiCommand.newHtmlFile",
-            "sequence": [
-                {
-                    "command": "workbench.action.files.newUntitledFile",
-                    "args": {
-                        "languageId": "html"
-                    }
-                }
-            ]
-        }
-    ],
+    {
+        "command": "multiCommand.newMarkdownFile",
+        "sequence": [
+            { "command": "workbench.action.files.newUntitledFile", "args": { "languageId": "markdown" } },
+            { "command": "editor.action.insertSnippet", "args": { "langId": "markdown", "name": "Markdown Frontmatter" } }
+        ]
+    },
+    {
+        "command": "multiCommand.insertResponsiveImage",
+        "sequence": [
+            { "command": "editor.action.insertSnippet", "args": { "langId": "markdown", "name": "Responsive Image" } }
+        ]
+    },
+    {
+        "command": "multiCommand.toggleRenderWhitespaceAndReload",
+        "sequence": [
+            { "command": "editor.action.toggleRenderWhitespace" },
+            { "command": "workbench.action.reloadWindow" }
+        ]
+    },
+    {
+        "command": "multiCommand.newHtmlFile",
+        "sequence": [
+            { "command": "workbench.action.files.newUntitledFile", "args": { "languageId": "html" } },
+            { "command": "editor.action.insertSnippet", "args": { "langId": "html", "name": "Standalone HTML" } }
+        ]
+    }
+],
+
+
+
 
     // ==========================================
     // SYMBOLLEISTEN-BEFEHLE (Commands Extension)
     // ==========================================
     "commands.commands": [
         {
-            "text": "📝 Neu",
+            "text": "📝 md",
             "command": "multiCommand.newMarkdownFile"
         },
+
+        {
+            "text": "📄 html",
+            "command": "multiCommand.newHtmlFile"
+},
+
+
         {
             "text": "💾 Speichern",
             "command": "workbench.action.files.save"
@@ -157,7 +149,7 @@
     "workbench.editor.labelFormat": "short",
     "workbench.editor.decorations.badges": false,
     "workbench.editor.decorations.colors": false,
-    "editor.renderWhitespace": "none",
+    "editor.renderWhitespace": "all",
     "window.commandCenter": false,
 
     // ==========================================
@@ -195,8 +187,10 @@
     "chat.disableAIFeatures": true,
 
     // Snippets aktivieren (minimalistisch)
-    "editor.tabCompletion": "onlySnippets",
+    "editor.tabCompletion": "on",
     "editor.suggest.showSnippets": true,
+    "emmet.triggerExpansionOnTab": true,
+
 
     // ==========================================
     // SYMBOLLEISTEN-STYLING
@@ -302,29 +296,10 @@
     // ==========================================
     // COMMAND-RUNNER
     // ==========================================
-    "command-runner.commands": {
-        "generateTOC": "node \"C:\\Users\\w\\.vscode\\scripts\\generate-toc.js\" \"${file}\""
-    },
+
     "command-runner.terminal.autoFocus": false,
     "command-runner.terminal.autoClear": true,
 
-    // ==========================================
-    // FILEUTILS CUSTOM COMMANDS
-    // ==========================================
-    "fileutils.customCommands": [
-        {
-            "command": "renameFromYamlTitle",
-            "title": "Rename: YAML Title → Filename",
-            "script": [
-                "const fs = require('fs');",
-                "const content = fs.readFileSync('${file}', 'utf8');",
-                "const match = content.match(/title:\\s*(.+)/);",
-                "if (!match) throw 'Kein YAML-Titel gefunden.';",
-                "const title = match[1].trim().toLowerCase().replace(/\\s+/g, '-');",
-                "title + '.md'"
-            ]
-        }
-    ],
 
     // Schriftwechsel zwischen md und txt
     "editor.fontFamily": "'Cascadia Code', 'Consolas'",
@@ -343,8 +318,7 @@
     "markdown.preview.typographer": true,
     "read-aloud-text.voice": "",
     "editor.tabFocusMode": false,
-    "editor.fontSize": 16,
-    "breadcrumbs.enabled": false
+    "editor.fontSize": 16
 
 // beginnt ganz oben mit geschweifter Klammer, daher nie die da unten vergessen, Oida!
 }
