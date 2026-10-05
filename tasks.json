@@ -120,9 +120,11 @@
             "type": "shell",
             "command": "python",
             "args": [
-                "C:\\Tools\\hints\\VS Code\\vscode_absaetze_erzeugen\\fix_breaks.py",
+                "C:\\Tools\\misc\\vscode\\vscode_absaetze_erzeugen\\fix_breaks.py",
                 "${file}"
             ],
+
+
             "group": "build",
             "presentation": {
                 "reveal": "silent",

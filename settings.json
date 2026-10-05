@@ -21,8 +21,8 @@
     "workbench.startupEditor": "none",
 
     // Terminal-Schriftarten
-    "terminal.integrated.fontFamily": "Cascadia Mono",
-    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.fontFamily": "JetBrainsMonoNL Nerd Font",
+    "terminal.integrated.fontSize": 14,
     "terminal.integrated.fontWeight": "normal",
     "terminal.integrated.fontLigatures": false,
 
@@ -134,16 +134,46 @@
     // ==========================================
     // EDITOR-EINSTELLUNGEN
     // ==========================================
+
+// global
+
+    "editor.fontFamily": "'JetBrainsMonoNL Nerd Font', sans",
+    "editor.lineHeight": 0,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 80,
+    "editor.fontWeight": "300",
+
+
+    // txt (plain text) und Markdown aber mit automatischem Umbruch
+    "[plaintext]": {
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 70,
+    "editor.fontWeight": "300"
+  },
+
+    "[markdown]": {
+
+    "editor.fontFamily": "'Geist', sans",
+    "editor.fontSize": 18,
+    "editor.lineHeight": 1.5,
+    "editor.fontWeight": "400",
+
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 80,
+
+    },
+
     "zenMode.hideStatusBar": false,
     "workbench.editor.empty.hint": "hidden",
-    "editor.fontWeight": "400",
+    // "editor.fontWeight": "400",
     "editor.cursorStyle": "line",
     "editor.cursorBlinking": "smooth",
     "window.autoDetectColorScheme": true,
     "files.defaultLanguage": "markdown",
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
-    "editor.wordWrap": "on",
+
+
     "workbench.editor.showTabs": "multiple",
     "workbench.editor.tabSizing": "shrink",
     "workbench.editor.labelFormat": "short",
@@ -166,6 +196,9 @@
     "markdownShortcuts.icons.image": true,
     "markdownShortcuts.icons.link": true,
     "markdownShortcuts.bullets.marker": "-",
+
+
+
 
     // ==========================================
     // AUTOVERVOLLSTÄNDIGUNG & COPILOT
@@ -195,9 +228,10 @@
     // ==========================================
     // SYMBOLLEISTEN-STYLING
     // ==========================================
-    "ShortcutMenuBar.fontSize": "20px",
-    "ShortcutMenuBar.height": "40px",
-    "ShortcutMenuBar.buttonPadding": "18px",
+
+"ShortcutMenuBar.fontSize": "20px",
+"ShortcutMenuBar.height": "40px",
+"ShortcutMenuBar.buttonPadding": "18px",
 
     // ==========================================
     // THEMES & ICONS
@@ -268,6 +302,14 @@
                 },
 
                 {
+      "scope": "markup.italic.markdown",
+      "settings": {
+        "foreground": "#91c6dd"
+      }
+    },
+
+
+                {
     "scope": "markup.underline.link.wikilink",
     "settings": { "foreground": "#7aa2c8" }
 },
@@ -301,14 +343,6 @@
     "command-runner.terminal.autoClear": true,
 
 
-    // Schriftwechsel zwischen md und txt
-    "editor.fontFamily": "'Cascadia Code', 'Consolas'",
-    "[markdown]": {
-        "editor.fontFamily": "'Segoe UI', 'Arial'",
-        "editor.fontSize": 20,
-        "editor.lineHeight": 32
-    },
-
     // Markdown-Toolbar verbergen
     "markdown.editor.toolbar.enabled": false,
 
@@ -317,8 +351,11 @@
     "terminal.integrated.cwd": "C:\\Tools",
     "markdown.preview.typographer": true,
     "read-aloud-text.voice": "",
-    "editor.tabFocusMode": false,
-    "editor.fontSize": 16
+        "security.allowedUNCHosts": [
+        "wsl.localhost"
+    ],
+    "window.confirmSaveUntitledWorkspace": false,
+    "editor.mouseWheelZoom": true
 
 // beginnt ganz oben mit geschweifter Klammer, daher nie die da unten vergessen, Oida!
 }

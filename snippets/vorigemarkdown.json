@@ -7,7 +7,7 @@
     // Änderungen nur hier
 
 
- "Markdown Frontmatter": {
+    "Markdown Frontmatter": {
     "prefix": "frontmatter",
     "body": [
         "---",

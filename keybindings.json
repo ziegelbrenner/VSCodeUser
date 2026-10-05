@@ -146,13 +146,13 @@
     },
     // TOC: Kapitelnummern hinzufügen
     {
-        "key": "ctrl+m 1",
+        "key": "ctrl+m n",
         "command": "markdown.extension.toc.addSecNumbers",
         "when": "editorTextFocus && editorLangId == 'markdown'"
     },
     // TOC: Kapitelnummern entfernen
     {
-        "key": "ctrl+m 2",
+        "key": "ctrl+m z",
         "command": "markdown.extension.toc.removeSecNumbers",
         "when": "editorTextFocus && editorLangId == 'markdown'"
     },
@@ -233,7 +233,7 @@
     },
     // Snippet: Markdown Table 2 Columns — prefix "tab2"
     {
-        "key": "alt+m 2",
+        "key": "ctrl+m 2",
         "command": "editor.action.insertSnippet",
         "when": "editorTextFocus && editorLangId == 'markdown'",
         "args": {
@@ -242,7 +242,7 @@
     },
     // Snippet: Markdown Table 3 Columns — prefix "tab3"
     {
-        "key": "alt+m 3",
+        "key": "ctrl+m 3",
         "command": "editor.action.insertSnippet",
         "when": "editorTextFocus && editorLangId == 'markdown'",
         "args": {
@@ -278,7 +278,7 @@
         }
     },
 
-    // [[Wikilinks]] erstellen
+    // [[Wikilinks]] erstellen um Markierung
 
     {
   "key": "alt+m l",
@@ -289,6 +289,8 @@
   }
 },
 
+// [einfache Klammer] erstellen um Markierung
+
     {
   "key": "alt+n l",
   "command": "editor.action.insertSnippet",
@@ -298,19 +300,13 @@
   }
 },
 
+// neue html-datei mit standard.css (auch in menü unten)
+
 {
     "key": "alt+n h",
     "command": "multiCommand.newHtmlFile"
 },
-{
-    "key": "alt+m m",
-    "command": "HookyQR.minify"
-},
 
-{
-  "key": "alt+s",
-  "command": "workbench.action.tasks.runTask",
-  "args": "Suchwort: aktuelle Datei durchsuchen"
-}
+
 
 ]
