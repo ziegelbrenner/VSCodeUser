@@ -41,6 +41,18 @@
         "args": "Pandoc: Export HTML (VS Code Style)",
         "when": "editorTextFocus && editorLangId == 'markdown'"
     },
+
+
+    // Amb html export
+    {
+        "key": "ctrl+m a",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Pandoc: Export HTML (Amb)",
+        "when": "editorTextFocus && editorLangId == 'markdown'"
+},
+
+
+
     // Haupt-Chord: PDF Export (über wkhtmltopdf)
     {
         "key": "ctrl+m p",

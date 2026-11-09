@@ -1,0 +1,28 @@
+ // Bild einfügen (Pelican {static} Pfad)
+    {
+        "key": "ctrl+m b",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "args": {
+            "snippet": "<figure>\n  <img src=\"{static}/images/${1:bildname}-500px.jpg\"\n       srcset=\"/images/${1:bildname}-500px.jpg 1x,\n               /images/${1:bildname}-1000px.jpg 2x\"\n       alt=\"${2:Bildbeschreibung}\"\n       style=\"max-width: 100%; height: auto;\">\n  <figcaption>${3:Bildunterschrift}</figcaption>\n</figure>\n$0"
+        },
+
+    // Bild einfügen (Lokaler relativer Pfad für direkten Export)
+    {
+        "key": "ctrl+m i",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "args": {
+            "snippet": "<figure>\n  <img src=\"${1:bildname}.jpg\"\n       salt=\"${2:Bildbeschreibung}\"\n       style=\"max-width: 100%; height: auto;\">\n  <figcaption>${3:Bildunterschrift}</figcaption>\n</figure>\n$0"
+        }
+    },
+
+       // Snippet: Universelles Bild (Export-sicher) — prefix "img"
+    {
+        "key": "alt+m e",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && editorLangId == 'markdown'",
+        "args": {
+            "snippet": "<div align=\"center\">\n  <img src=\"${1:PallasAthene.jpg}\" alt=\"${2:Bildbeschreibung}\" width=\"480\" style=\"max-width: 100%; height: auto;\">\n  <br>\n  <em>${3:Bildunterschrift}</em>\n</div>\n$0"
+        }
+    },

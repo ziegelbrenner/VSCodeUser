@@ -58,6 +58,28 @@
                 "cwd": "${fileDirname}"
             }
         },
+
+ {
+    "label": "Pandoc: Export HTML (Amb)",
+    "type": "shell",
+    "command": "pandoc",
+    "args": [
+            "${file}",
+            "-o",
+            "${fileDirname}/${fileBasenameNoExtension}.html",
+            //--standalone",
+            "--template=C:/Users/w/amb/konfig/template.html",
+            "--css=konfig/style.css",
+            "--section-divs"
+            ],
+    "problemMatcher": [],
+ //   "options": {
+ //       "cwd": "${fileDirname}"
+ //   }
+},
+
+
+
         {
             "label": "Pandoc: Export DOCX",
             "type": "shell",
